@@ -1,0 +1,14 @@
+.header-bar{
+    color:#fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    .header-bar-left{
+        display: flex;
+        flex: 1;
+    }
+    .logo{
+        color:#fff;
+        width: 200px;
+    }
+}
