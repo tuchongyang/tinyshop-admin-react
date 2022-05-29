@@ -13,11 +13,11 @@ export interface ListPageType<T> {
 }
 export type ResponseType<T> = Promise<BaseResponse<T>>
 
-const request = <T>(config: AxiosRequestConfig): Promise<BaseResponse<T>> => {
+const request = <T>(config: AxiosRequestConfig): Promise<T> => {
   return new Promise((resolve, reject) => {
     service.request<BaseResponse<T>>(config).then(
       (res) => {
-        resolve(res.data)
+        resolve(res.data.result)
       },
       (err) => {
         message.error(err.message || "请求失败，请稍后重试")

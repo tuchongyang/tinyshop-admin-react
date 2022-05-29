@@ -11,4 +11,9 @@ export default {
       url: "/system/user/info",
       method: "get",
     }),
+  list: () =>
+    request<any>({
+      url: "/system/menu/list",
+      method: "get",
+    }),
 }

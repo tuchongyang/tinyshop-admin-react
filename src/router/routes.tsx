@@ -20,6 +20,22 @@ const routes = [
         component: () => import("@/pages/table"),
       },
       {
+        path: "/system",
+        meta: {
+          title: "系统管理",
+        },
+        component: () => import("@/components/Layout/EmptyLayout"),
+        children: [
+          {
+            path: "menu",
+            meta: {
+              title: "菜单管理",
+            },
+            component: () => import("@/pages/system/menu"),
+          },
+        ],
+      },
+      {
         path: "*",
         component: () => import("@/pages/public/404"),
       },

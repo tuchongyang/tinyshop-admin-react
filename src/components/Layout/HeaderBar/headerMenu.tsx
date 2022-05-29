@@ -1,7 +1,7 @@
 import React from "react"
 import { Menu } from "antd"
 import type { MenuProps } from "antd"
-import "./headerMenu.scss"
+import "./headerMenu.less"
 const items1: MenuProps["items"] = ["1", "2", "3"].map((key) => ({
   key,
   label: `nav ${key}`,

@@ -9,6 +9,7 @@ export default defineConfig(({ mode }) => ({
     // 配置路径别名
     alias: {
       "@": path.resolve(__dirname, "./src/"),
+      "~": path.resolve(__dirname, "./node_modules/"),
     },
   },
   css: {
@@ -18,10 +19,9 @@ export default defineConfig(({ mode }) => ({
       hashPrefix: "prefix",
     },
     preprocessorOptions: {
-      sass: {
+      less: {
         // 支持内联 JavaScript
         javascriptEnabled: true,
-        additionalData: '@import "@/assets/scss/variables.scss";',
       },
     },
   },

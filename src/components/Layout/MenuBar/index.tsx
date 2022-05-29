@@ -1,8 +1,11 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { Menu } from "antd"
+import { Menu, Spin } from "antd"
 import type { MenuProps } from "antd"
 import Api from "@/api"
+// import useFetch from "@/hooks/useFetch"
+import { useRequest } from "ahooks"
+import store from "@/store"
 
 interface MenuItem {
   key: string
@@ -16,7 +19,6 @@ const App: React.FC = () => {
     const result = []
     for (let i = 0; i < children.length; i++) {
       const childItem = children[i]
-      const key = String(i + 1)
       const menu: MenuItem = {
         key: childItem.id + "$$" + childItem.path,
         // icon: React.createElement(icon),
@@ -29,18 +31,20 @@ const App: React.FC = () => {
     }
     return result
   }
+  const { data, loading } = useRequest(Api.system.menu.tree)
   React.useEffect(() => {
-    console.log(22)
-    Api.system.menu.tree().then((res) => {
-      const result = getMenus(res.result)
-      setMenus(result)
-    })
-  }, [])
+    setMenus(getMenus(data || []))
+    store.menus = data
+  }, [data])
   const navigate = useNavigate()
   const onClick: MenuProps["onClick"] = (info) => {
-    console.log(info)
-    navigate(info.key.split("$$").pop())
+    const path = info.key.split("$$").pop()
+    path && navigate(path)
   }
-  return <Menu mode="inline" defaultSelectedKeys={["1"]} defaultOpenKeys={["sub1"]} style={{ height: "100%", borderRight: 0 }} items={menus} onClick={onClick} />
+  return (
+    <Spin spinning={loading}>
+      <Menu mode="inline" defaultSelectedKeys={["1"]} defaultOpenKeys={["sub1"]} style={{ height: "100%", borderRight: 0 }} items={menus} onClick={onClick} />
+    </Spin>
+  )
 }
 export default App

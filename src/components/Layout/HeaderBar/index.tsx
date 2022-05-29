@@ -1,7 +1,7 @@
 import React from "react"
 import { Layout } from "antd"
 import HeaderMenu from "./headerMenu"
-import "./index.scss"
+import "./index.less"
 import UserInfo from "./UserInfo/userInfo"
 const App: React.FC = () => (
   <Layout.Header className="header-bar">

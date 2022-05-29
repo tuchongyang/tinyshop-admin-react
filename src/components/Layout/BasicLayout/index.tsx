@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom"
 import HeaderBar from "../HeaderBar"
 import SiderBar from "../SiderBar"
 import Breadcrumb from "../Breadcrumb"
-import "./index.scss"
+import "./index.less"
 const { Content, Sider } = Layout
 
 const App: React.FC = () => (
