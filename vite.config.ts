@@ -9,7 +9,6 @@ export default defineConfig(({ mode }) => ({
     // 配置路径别名
     alias: {
       "@": path.resolve(__dirname, "./src/"),
-      "~": path.resolve(__dirname, "./node_modules/"),
     },
   },
   css: {
