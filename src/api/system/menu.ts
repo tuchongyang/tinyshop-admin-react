@@ -5,6 +5,7 @@ export default {
     request<any>({
       url: "/system/menu/tree",
       method: "get",
+      params: { t: Math.random() },
     }),
   info: () =>
     request<any>({
